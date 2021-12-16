@@ -1,8 +1,5 @@
-/*
-  Things to do:
-  - Remove this file
-*/
-function Test() {
+function Info() {
+
     return (
         <section>
           <h1 className="logo">unSketchy</h1>
@@ -15,4 +12,4 @@ function Test() {
       )
 }
 
-export default Test
+export default Info

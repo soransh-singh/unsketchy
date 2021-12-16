@@ -12,6 +12,7 @@ function ImagePreview(props) {
 
   const [current, setCurrent] = useState(0)
   const imageArr = props.images
+  
   function handleCurrent(event) {
     switch (event) {
       case "PREV":

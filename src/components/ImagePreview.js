@@ -12,7 +12,7 @@ function ImagePreview(props) {
 
   const [current, setCurrent] = useState(0)
   const imageArr = props.images
-  
+
   function handleCurrent(event) {
     switch (event) {
       case "PREV":
@@ -29,10 +29,12 @@ function ImagePreview(props) {
   return (
     <div>
       <div>
-        <button onClick={()=>handleCurrent("PREV")}>prev</button>
-        <button>pause</button>
-        <button onClick={()=>handleCurrent("NEXT")}>next</button>
-        <button>info</button>
+        <button className="btn" onClick={props.back}>{/*back*/}<i class="fas fa-arrow-left"></i></button>
+        <p>{props.timer}</p>
+        <button className="btn" onClick={()=>handleCurrent("PREV")}>{/*prev*/}<i class="fas fa-backward"></i></button>
+        <button className="btn">{/*pause and play  :: <i class="fas fa-play"></i> */}<i class="fas fa-pause"></i></button>
+        <button className="btn" onClick={()=>handleCurrent("NEXT")}>{/*next*/}<i class="fas fa-forward"></i></button>
+        <button className="btn">{/*info*/}<i class="fas fa-info"></i></button>
       </div>
       <img
         src={imageArr[current].urls.regular}

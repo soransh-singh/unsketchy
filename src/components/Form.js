@@ -17,10 +17,14 @@ function Form(props){
   }
 
   return (
-    <div>
+    <div className="form">
       <label>
-        <p>Type of reference:</p>
-        <select name="type" value={input.type} onChange={handleInput}>
+        <p className="form__label">Type of reference:</p>
+        <select
+          name="type" value={input.type}
+          onChange={handleInput}
+          className="form__input"
+        >
           <option value="">--SELECT--</option>
           <option value="human">Human</option>
           <option value="animal pet">Animals</option>
@@ -30,8 +34,12 @@ function Form(props){
         </select>
       </label>
       <label>
-        <p>Time:</p>
-        <select name="time" value={input.time} onChange={handleInput}>
+        <p className="form__label">Time:</p>
+        <select
+          name="time" value={input.time}
+          onChange={handleInput}
+          className="form__input"
+        >
           <option value="">--SELECT--</option>
           <option value="10">10 seconds</option>
           <option value="30">30 seconds</option>
@@ -41,7 +49,11 @@ function Form(props){
           <option value="600">10 minutes</option>
         </select>
       </label>
-      <button className="btn" onClick={()=>props.handleSubmit(input)}>Start</button>
+      <button
+        className="form__btn"
+        onClick={()=>props.handleSubmit(input)}>
+        Start
+      </button>
     </div>
   )
 }

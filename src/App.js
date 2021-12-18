@@ -60,18 +60,20 @@ function App() {
 
   return (
     <>
-    <header>
-      <h1 className="logo">unSketchy</h1>
-    </header>
-    <main className="flex">
       {(!showImages)?
         <>
+        <header>
+          <h1 className="logo">unSketchy</h1>
+        </header>
+        <main className="flex">
           <Info />
           <Form handleSubmit={handleSubmit}/>
+        </main>
         </>:
-        <ImagePreview images={images.response} timer={timer} back={()=>setShowImages(false)}/>
+        <main className="flex">
+          <ImagePreview images={images.response} timer={timer} back={()=>setShowImages(false)}/>
+        </main>
       }
-    </main>
     </>
   );
 }

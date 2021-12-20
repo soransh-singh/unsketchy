@@ -20,6 +20,8 @@ const unplash = createApi({
     accessKey: process.env.REACT_APP_UNPLASH_API_KEY
   });
 
+console.log(process.env.REACT_APP_UNPLASH_API_KEY)
+
 if(!process.env.REACT_APP_UNPLASH_API_KEY){
   console.log("there is no key available")
 }

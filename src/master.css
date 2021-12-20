@@ -142,4 +142,5 @@ main{
   max-height: 80vh;
   width: auto;
   max-width: 100%;
+  border: solid 4px hsl(0 0% 12%);
 }

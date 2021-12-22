@@ -3,44 +3,82 @@ import {useState, useEffect, useRef} from 'react'
 /*
 - set a timer
   Things to do:
-  - Set pause button
+  - IN TIMER:
+    - Set pause button to stop timer
+    - connect to prev button/next button
+    - reset function for Timer
+        - clear timer
+        - set new timer
+    - when timer hit 0 it should trigger next function
   - set info button
 */
 
 
 function ImagePreview(props) {
 
-  // hooks for timer
-  const Ref = useRef(null)
-
-  const [timer, setTimer] = useState('00:00');
-
-
   const [current, setCurrent] = useState(0)
   const imageArr = props.images
 
-  function handleCurrent(event) {
-    switch (event) {
+  const [timer, setTimer] = useState(props.timer)
+  const [isPaused, setIsPaused] = useState(false)
+  const Ref = useRef(null)
+
+  function displayTimer(){
+    let minute = Math.floor((timer/60)%60)
+    let seconds = Math.floor((timer)%60)
+    if(minute<= 9){
+      minute = `0${minute}`
+    }
+    if(seconds<= 9){
+      seconds = `0${seconds}`
+    }
+    return(
+      `${minute}:${seconds}`
+    )
+  }
+
+  function handleCurrent(EVENT) {
+    switch (EVENT) {
       case "PREV":
         setCurrent(prev => prev>0?prev-1:imageArr.length-1)
         break;
       case "NEXT":
-        setCurrent(prev => prev<imageArr.length-1?prev+1:0)
+        setCurrent(prev => prev<(imageArr.length-1)?prev+1:0)
+        break;
+      case "PAUSE":
+        setIsPaused(prevPause => !prevPause)
         break;
       default:
         console.log("there is some error")
     }
   }
 
+  function startTimer(){
+    const id = setInterval(()=>{
+      setTimer(prevTime=>prevTime-1)
+    },1000)
+    Ref.current = id
+  }
+
+  useEffect(()=>{
+    startTimer()
+    return ()=>{
+      clearInterval(Ref.current)
+    }
+  },[])
+
+
   return (
     <div className="image-preview">
       <div className="image-preview__btns">
-        <button className="image-preview__btn image-preview__btn--back" onClick={props.back}>{/*back*/}<i class="fas fa-arrow-left"></i></button>
-        <p className="image-preview__timer">{props.timer}</p>
-        <button className="image-preview__btn" onClick={()=>handleCurrent("PREV")}>{/*prev*/}<i class="fas fa-backward"></i></button>
-        <button className="image-preview__btn">{/*pause and play  :: <i class="fas fa-play"></i> */}<i class="fas fa-pause"></i></button>
-        <button className="image-preview__btn" onClick={()=>handleCurrent("NEXT")}>{/*next*/}<i class="fas fa-forward"></i></button>
-        <button className="image-preview__btn">{/*info*/}<i class="fas fa-info"></i></button>
+        <button className="image-preview__btn image-preview__btn--back" onClick={props.back}>{/*back*/}<i className="fas fa-arrow-left"></i></button>
+        <p className="image-preview__timer">{displayTimer()}</p>
+        <button className="image-preview__btn" onClick={()=>handleCurrent("PREV")}>{/*prev*/}<i className="fas fa-backward"></i></button>
+        <button className="image-preview__btn" onClick={()=>handleCurrent("PAUSE")}>
+          {isPaused?<i className="fas fa-play"></i>:<i className="fas fa-pause"></i>}
+        </button>
+        <button className="image-preview__btn" onClick={()=>handleCurrent("NEXT")}>{/*next*/}<i className="fas fa-forward"></i></button>
+        <button className="image-preview__btn">{/*info*/}<i className="fas fa-info"></i></button>
       </div>
       <img
         src={imageArr[current].urls.regular}

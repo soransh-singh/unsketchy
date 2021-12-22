@@ -57,13 +57,6 @@ input{
   width: 100%;
 }
 
-@media (min-width: 600px) {
-  .flex{
-    display: flex;
-    flex-direction: row;
-  }
-}
-
 /* -Header- */
 
 header{
@@ -83,7 +76,24 @@ main{
   max-width: 900px;
   margin-inline: auto;
   padding: 1rem;
-  display: flex;
+}
+
+/* info section */
+
+.info{
+  text-align: center;
+}
+
+
+.info__illustration{
+  margin-bottom: 1rem;
+}
+
+.info__illustration>a{
+  display: block;
+  text-align: center;
+  font-size: .8rem;
+  margin-top: -3rem;
 }
 
 /* form section */
@@ -143,4 +153,16 @@ main{
   width: auto;
   max-width: 100%;
   border: solid 4px hsl(0 0% 12%);
+}
+
+
+@media (min-width: 600px) {
+  .info{
+    text-align: left;
+  }
+
+  .flex{
+    display: flex;
+    flex-direction: row;
+  }
 }

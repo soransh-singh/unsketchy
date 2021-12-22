@@ -69,7 +69,11 @@ function App() {
         </main>
         </>:
         <main className="flex">
-          <ImagePreview images={images.response} timer={timer} back={()=>setShowImages(false)}/>
+          <ImagePreview
+            images={images.response}
+            timer={timer}
+            back={()=>setShowImages(false)}
+          />
         </main>
       }
     </>

@@ -1,14 +1,20 @@
-import {useState} from 'react'
+import {useState, useEffect, useRef} from 'react'
 
 /*
+- set a timer
   Things to do:
   - Set pause button
   - set info button
-  - set a timer
 */
 
 
 function ImagePreview(props) {
+
+  // hooks for timer
+  const Ref = useRef(null)
+
+  const [timer, setTimer] = useState('00:00');
+
 
   const [current, setCurrent] = useState(0)
   const imageArr = props.images

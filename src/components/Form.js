@@ -4,8 +4,8 @@ function Form(props){
 
   // use state for form
   const [input, setInput] = useState({
-    type: "",
-    time: ""
+    type: "human",
+    time: "300"
   })
 
   function handleInput(event){
@@ -25,7 +25,6 @@ function Form(props){
           onChange={handleInput}
           className="form__input"
         >
-          <option value="">--SELECT--</option>
           <option value="human">Human</option>
           <option value="animal pet">Animals</option>
           <option value="building structure">Structures and Building</option>
@@ -40,7 +39,6 @@ function Form(props){
           onChange={handleInput}
           className="form__input"
         >
-          <option value="">--SELECT--</option>
           <option value="10">10 seconds</option>
           <option value="30">30 seconds</option>
           <option value="60">1 minute</option>

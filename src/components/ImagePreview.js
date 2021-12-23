@@ -5,8 +5,8 @@ import {useState, useEffect, useRef} from 'react'
   Things to do:
   - IN TIMER:
     - Set pause button to stop timer
-    - connect to prev button/next button
-    - reset function for Timer
+    X- connect to prev button/next button
+    X- reset function for Timer
         - clear timer
         - set new timer
     - when timer hit 0 it should trigger next function
@@ -23,7 +23,26 @@ function ImagePreview(props) {
   const [isPaused, setIsPaused] = useState(false)
   const Ref = useRef(null)
 
-  function displayTimer(){
+  useEffect(()=>{
+    const id = setTimeout(() => {
+      if(!isPaused){
+        setTimer(prevTime => prevTime - 1)
+      }
+    }, 1000);
+    Ref.current = id
+
+    return ()=>{
+      clearTimeout(Ref.current)
+    }
+  },[timer, isPaused])
+
+  function resetTimer() {
+    clearTimeout(Ref.current)
+    setTimer(props.timer)
+    setIsPaused(true)
+  }
+
+  const displayTimer = ()=>{
     let minute = Math.floor((timer/60)%60)
     let seconds = Math.floor((timer)%60)
     if(minute<= 9){
@@ -41,9 +60,11 @@ function ImagePreview(props) {
     switch (EVENT) {
       case "PREV":
         setCurrent(prev => prev>0?prev-1:imageArr.length-1)
+        resetTimer()
         break;
       case "NEXT":
         setCurrent(prev => prev<(imageArr.length-1)?prev+1:0)
+        resetTimer()
         break;
       case "PAUSE":
         setIsPaused(prevPause => !prevPause)
@@ -52,21 +73,6 @@ function ImagePreview(props) {
         console.log("there is some error")
     }
   }
-
-  function startTimer(){
-    const id = setInterval(()=>{
-      setTimer(prevTime=>prevTime-1)
-    },1000)
-    Ref.current = id
-  }
-
-  useEffect(()=>{
-    startTimer()
-    return ()=>{
-      clearInterval(Ref.current)
-    }
-  },[])
-
 
   return (
     <div className="image-preview">

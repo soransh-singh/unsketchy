@@ -1,15 +1,7 @@
 import {useState, useEffect, useRef} from 'react'
 
 /*
-- set a timer
   Things to do:
-  - IN TIMER:
-    - Set pause button to stop timer
-    X- connect to prev button/next button
-    X- reset function for Timer
-        - clear timer
-        - set new timer
-    - when timer hit 0 it should trigger next function
   - set info button
 */
 

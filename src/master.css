@@ -1,6 +1,13 @@
+:root{
+  --clr-dark: 200 20% 8%;
+  --clr-yellow-saturated: 60 30% 70%;
+  --clr-yellow: 60 80% 60%;
+}
+
 *{
   box-sizing: border-box;
   margin: 0;
+  cursor: default;
 }
 
 /* ----------------- */
@@ -11,8 +18,9 @@ body{
   min-height: 100vh;
   font-family: 'Nunito', sans-serif;
   line-height: 1.6;
-  background-color: hsl(200 20% 8%); /* dark color */
-  color: hsl(60 30% 70%); ;
+  background-color: hsl(var(--clr-dark)); /* dark color */
+  color: hsl(var(--clr-yellow-saturated)); /* text color */
+
 }
 
 img{
@@ -23,12 +31,18 @@ img{
 
 a{
   color: inherit;
+  cursor: pointer;
+}
+
+a:hover{
+
+  color: hsl(0 0% 100%);
 }
 
 strong{
   font-weight: 900;
   font-size: 1.1em;
-  color: white;
+
 }
 
 label{
@@ -41,6 +55,7 @@ select,
 option,
 input{
   font: inherit;
+  cursor: pointer;
 }
 
 /* ----------------- */
@@ -62,12 +77,13 @@ input{
 header{
   margin-bottom: 2rem;
   padding: 1rem 2rem;
-  box-shadow: 0 0 4px hsl(0 0% 12%/0.2)
+  box-shadow: 0 0 8px hsl(var(--clr-yellow-saturated)/0.3)
 }
 
 .logo{
   font-weight: 900;
   letter-spacing: -2px;
+  color: hsl(var(--clr-yellow));
 }
 
 /* --Main section-- */
@@ -84,6 +100,9 @@ main{
   text-align: center;
 }
 
+.info strong{
+  color: hsl(var(--clr-yellow));
+}
 
 .info__illustration{
   margin-bottom: 1rem;
@@ -99,7 +118,7 @@ main{
 /* form section */
 
 .form{
-  border: solid 2px red;
+  border: double .5rem hsl(var(--clr-yellow-saturated));
   padding: 1.5em;
   border-radius: .25rem;
 }
@@ -109,13 +128,27 @@ main{
   font-size: 1.2rem;
 }
 
+.form__label:hover{
+  color: hsl(var(--clr-yellow));
+}
+
 .form__input{
   font-size: 1.2rem;
+  font-weight:700;
   border: none;
   padding: .25rem .8rem;
   border-radius: .2rem;
   width: 60%;
   min-width: 200px;
+  background-color: hsl(var(--clr-yellow-saturated));
+}
+
+.form__input:focus{
+  background-color: hsl(var(--clr-yellow));
+}
+
+.form__input option{
+  background-color: hsl(var(--clr-yellow-saturated));
 }
 
 .form__btn{
@@ -123,6 +156,16 @@ main{
   padding: .25rem 1.5rem;
   border-radius: .3rem;
   font-weight: 700;
+  background-color: hsl(var(--clr-yellow));
+  transition: all 0.3s ease-in-out;
+}
+
+.form__btn:hover{
+  box-shadow: inset 2px 2px 6px hsl(0 0% 10%/0.6) ;
+}
+
+.form__btn:active{
+  transform: scale(0.9);
 }
 
 /* Image Preview */

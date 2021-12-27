@@ -4,7 +4,6 @@ import {useState} from 'react'
 /*
   - add better options
   [- and better way for queries
-
 */
 
 function Form(props){

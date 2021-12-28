@@ -1,7 +1,7 @@
 :root{
   --clr-dark: 200 20% 8%;
-  --clr-yellow-saturated: 60 30% 70%;
-  --clr-yellow: 60 80% 60%;
+  --clr-yellow-saturated: 60 30% 70%;/* dark color */
+  --clr-yellow: 60 80% 60%;/* text color */
 }
 
 *{
@@ -18,8 +18,8 @@ body{
   min-height: 100vh;
   font-family: 'Nunito', sans-serif;
   line-height: 1.6;
-  background-color: hsl(var(--clr-dark)); /* dark color */
-  color: hsl(var(--clr-yellow-saturated)); /* text color */
+  background-color: hsl(var(--clr-dark));
+  color: hsl(var(--clr-yellow-saturated));
 
 }
 

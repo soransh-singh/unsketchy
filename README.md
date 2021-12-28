@@ -24,8 +24,8 @@ A reference site/web App for sketching.
 
 A unSketchy is a reference site to practice sketching and drawing.
 This project is built using reactJs and use unplash API to fetch images.
----
-![Screenshot of main page](./Screenshot-main.png)
+
+![Screenshot of main page](./screenshot-main.png)
 
 [see the live demo here](https://unsketchy.vercel.app/)
 

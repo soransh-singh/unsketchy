@@ -1,3 +1,4 @@
+**It's a work in progress :>:P**
 # unSketchy (Sketch Reference)
 
 A reference site/web App for sketching.
@@ -18,7 +19,7 @@ A reference site/web App for sketching.
 - [Author](#Author)
 - [Acknowledgments](#Acknowledgments)  
 
-**To be Continued :>:P**
+
 
 ## Overview
 

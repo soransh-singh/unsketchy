@@ -80,9 +80,14 @@ function ImagePreview(props) {
       </div>
       <img
         src={imageArr[current].urls.regular}
-        alt="this is what you have to draw..."
+        alt={imageArr[current].alt_description}
         className="image-preview__image"
       />
+    <p>
+      Image by
+      <a href={imageArr[current].user.links.self}> {imageArr[current].user.name} </a>
+      on <a href="https://unsplash.com/?utm_source=unsketchy&utm_medium=referral">unplash</a>
+    </p>
     </div>
   )
 }

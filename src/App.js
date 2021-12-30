@@ -8,11 +8,7 @@ import ImagePreview from './components/ImagePreview'
   Things to do:
   - try to impement react router
   Form:
-  X- also try to move form into it's own component
-  Timer:
-  X- useState for timer
-  - implement timer
-  - useEffect for timer
+    - implement better form
   - remove comments
 */
 
@@ -40,7 +36,7 @@ function App() {
 
   // useEffect to fetch the image from api
   useEffect(() => {
-    unplash.photos.getRandom({ query: query, count: 8 })
+    unplash.photos.getRandom({ query: query, count: 20 })
       .then(result => {
         setImagesResponse(result);
       })

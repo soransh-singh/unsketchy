@@ -15,10 +15,14 @@ function ImagePreview(props) {
   const [isPaused, setIsPaused] = useState(false)
   const Ref = useRef(null)
 
+
   useEffect(()=>{
     const id = setTimeout(() => {
       if(!isPaused){
         setTimer(prevTime => prevTime - 1)
+      }
+      if(timer<=0){
+        handleCurrent("NEXT")
       }
     }, 1000);
     Ref.current = id
@@ -26,6 +30,7 @@ function ImagePreview(props) {
     return ()=>{
       clearTimeout(Ref.current)
     }
+     // eslint-disable-next-line
   },[timer, isPaused])
 
   function resetTimer() {
@@ -35,6 +40,7 @@ function ImagePreview(props) {
   }
 
   const displayTimer = ()=>{
+
     let minute = Math.floor((timer/60)%60)
     let seconds = Math.floor((timer)%60)
     if(minute<= 9){
@@ -69,25 +75,55 @@ function ImagePreview(props) {
   return (
     <div className="image-preview">
       <div className="image-preview__btns">
-        <button className="image-preview__btn image-preview__btn--back" onClick={props.back}>{/*back*/}<i className="fas fa-arrow-left"></i></button>
-        <p className="image-preview__timer">{displayTimer()}</p>
-        <button className="image-preview__btn" onClick={()=>handleCurrent("PREV")}>{/*prev*/}<i className="fas fa-backward"></i></button>
-        <button className="image-preview__btn" onClick={()=>handleCurrent("PAUSE")}>
-          {isPaused?<i className="fas fa-play"></i>:<i className="fas fa-pause"></i>}
+        <button
+          className="image-preview__btn image-preview__btn--back"
+          onClick={props.back}
+          aria-label="back">{/*back*/}
+            <i className="fas fa-arrow-left"></i>
         </button>
-        <button className="image-preview__btn" onClick={()=>handleCurrent("NEXT")}>{/*next*/}<i className="fas fa-forward"></i></button>
-        <button className="image-preview__btn">{/*info*/}<i className="fas fa-info"></i></button>
+
+        <p className="image-preview__timer">{displayTimer()}</p>
+
+        <button
+          className="image-preview__btn"
+          onClick={()=>handleCurrent("PREV")}
+          aria-label="previous">{/*prev*/}
+          <i className="fas fa-backward"></i>
+        </button>
+
+        <button
+          className="image-preview__btn"
+          onClick={()=>handleCurrent("PAUSE")}
+          aria-label={isPaused?"play":"pause"}>
+            {isPaused?<i className="fas fa-play"></i>:<i className="fas fa-pause"></i>}
+        </button>
+
+        <button
+          className="image-preview__btn"
+          onClick={()=>handleCurrent("NEXT")}
+          aria-label="next">{/*next*/}
+            <i className="fas fa-forward"></i>
+        </button>
+
+        <button
+          className="image-preview__btn"
+          aria-label="info">{/*info*/}
+            <i className="fas fa-info"></i>
+        </button>
       </div>
-      <img
-        src={imageArr[current].urls.regular}
-        alt={imageArr[current].alt_description}
-        className="image-preview__image"
-      />
-    <p>
-      Image by
-      <a href={imageArr[current].user.links.self}> {imageArr[current].user.name} </a>
-      on <a href="https://unsplash.com/?utm_source=unsketchy&utm_medium=referral">unplash</a>
-    </p>
+
+      <div>
+        <img
+          src={imageArr[current].urls.regular}
+          alt={imageArr[current].alt_description}
+          className="image-preview__image"
+        />
+      <p>
+        Image by
+        <a href={imageArr[current].user.links.self}> {imageArr[current].user.name} </a>
+        on <a href="https://unsplash.com/?utm_source=unsketchy&utm_medium=referral">unplash</a>
+      </p>
+      </div>
     </div>
   )
 }

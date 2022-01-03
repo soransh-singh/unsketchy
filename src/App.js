@@ -46,7 +46,6 @@ function App() {
   }, [query]);
 
   function handleSubmit(input){
-    console.log("form submitted");
     setQuery(input.type)
     setTimer(input.time)
     setShowImages(true)

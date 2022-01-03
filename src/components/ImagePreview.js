@@ -120,8 +120,8 @@ function ImagePreview(props) {
         />
       <p className="image-preview__info">
         Image by
-        <a href={imageArr[current].user.links.html}> {imageArr[current].user.name} </a>
-        on <a href="https://unsplash.com/?utm_source=unsketchy&utm_medium=referral">unplash</a>
+        <a href={imageArr[current].user.links.html  rel="nofollow"}> {imageArr[current].user.name} </a>
+        on <a href="https://unsplash.com/?utm_source=unsketchy&utm_medium=referral" rel="nofollow">unplash</a>
       </p>
       </div>
     </div>
